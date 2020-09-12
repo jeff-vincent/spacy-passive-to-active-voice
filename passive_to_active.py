@@ -29,14 +29,15 @@ for sent in doc.sents:
                 recipient = token.lower_
             if token.dep_ == 'ROOT':
                 main_verb_index == index_counter
-                if token.tag_ == 'PP':
-                    print('Need to convert {} to simple past.'.format(token.text))
+                # TODO: convert VBN to VBD
+                # if token.tag_ == 'VBN':
+                
                 main_verb = token.text
             if token.dep_ == 'agent':
                 agent_index = index_counter
                 agent = token.text
                 append = True
-            if agent and token.text != agent and not token.is_punct and agent != '*':
+            if agent and token.text != agent and not token.is_punct:
                 agent = agent + ' ' + token.text
             if token.is_punct:
                 punct = token.text
